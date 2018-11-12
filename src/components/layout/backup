@@ -1,0 +1,37 @@
+<form className="col s12" onSubmit={this.onSubmit}>
+          <div className="row">
+            <div className="input-field col m6 s12">
+              <i className="material-icons prefix">mode_edit</i>
+              <textarea
+                id="userTags"
+                name="userTags"
+                className={classNames('validate materialize-textarea', {
+                  invalid: errors.userTags
+                })}
+                value={userTags}
+                onChange={this.onChange}
+              />
+              <label data-error="My Custom Error Message" htmlFor="userTags">
+                Your Hashtags (i.e. #travel)
+              </label>
+            </div>
+            <div className="input-field col m6 s12">
+              <textarea
+                disabled
+                value={this.state.randomTags}
+                name="randomTags"
+                id="randomTags"
+                className="materialize-textarea"
+              />
+              <label
+                htmlFor="randomTags"
+                className={classNames({ active: randomTags !== '' })}
+              >
+                Randomized Hashtags
+              </label>
+            </div>
+            <button type="submit" className="btn waves-effect waves-light">
+              Submit <i className="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
