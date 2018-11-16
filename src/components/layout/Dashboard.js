@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import React, { Component } from 'react';
-import M from 'materialize-css';
 
 class Dashboard extends Component {
   state = {
     userTags: '',
     randomTags: '',
     isValid: true,
-    errorMessage: ''
+    errorMessage: '',
+    copyMessage: ''
   };
 
   onChange = e => {
@@ -72,15 +72,28 @@ class Dashboard extends Component {
     });
   };
 
+  copyToClipboard = () => {
+    this.randomTextArea.select();
+    document.execCommand('copy');
+    this.setState({ copyMessage: 'Copied!' });
+  };
+
   render() {
-    const { randomTags, userTags, isValid, errorMessage } = this.state;
+    const {
+      randomTags,
+      userTags,
+      isValid,
+      errorMessage,
+      copyMessage
+    } = this.state;
     return (
       <div>
         <div className="row">
           <div className="col l12 m6">
-            <h1>Start Randomizing</h1>
             <p className="flow-text">
-              TODO: Explain what this app is all about?
+              Fill out the hashtags on the left, and click randomize! If you
+              want to create groups, just login and you can manage your own
+              groups and randomize at different percentages.
             </p>
           </div>
         </div>
@@ -100,16 +113,27 @@ class Dashboard extends Component {
                   onChange={this.onChange}
                   required
                 />
-                <label htmlFor="userTags">Your Hashtags</label>
+                <label className="active" htmlFor="userTags">
+                  Your Hashtags
+                </label>
                 <span className="helper-text" data-error={errorMessage} />
               </div>
               <div className="input-field col m6 s12">
+                <i
+                  className="material-icons prefix"
+                  onClick={this.copyToClipboard}
+                  style={{ cursor: 'pointer' }}
+                >
+                  content_copy
+                </i>
                 <textarea
-                  disabled
+                  readOnly
+                  onChange={() => {}}
                   value={this.state.randomTags}
                   name="randomTags"
                   id="randomTags"
                   className="materialize-textarea"
+                  ref={textarea => (this.randomTextArea = textarea)}
                 />
                 <label
                   htmlFor="randomTags"
@@ -117,6 +141,7 @@ class Dashboard extends Component {
                 >
                   Randomized Hashtags
                 </label>
+                <span className="helper-text">{copyMessage}</span>
               </div>
             </div>
             <button

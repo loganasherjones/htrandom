@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 
 import Navbar from './components/layout/Navbar';
 import Dashboard from './components/layout/Dashboard';
+import Groups from './components/groups/Groups';
+import Login from './components/auth/Login';
 import store from './store';
 import './App.css';
 
@@ -16,7 +18,9 @@ class App extends Component {
             <Navbar />
             <div className="container">
               <Switch>
-                <Route path="/" component={Dashboard} />
+                <Route exact path="/" component={Dashboard} />
+                <Route exact path="/groups" component={Groups} />
+                <Route exact path="/login" component={Login} />
               </Switch>
             </div>
           </div>
