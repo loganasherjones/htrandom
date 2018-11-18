@@ -40,9 +40,6 @@ class Navbar extends Component {
             <li>
               <Link to="/groups">Groups</Link>
             </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
             {isAuthenticated ? (
               <li>
                 <a href="#!" onClick={this.onLogoutClick}>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
 
@@ -57,6 +58,10 @@ class Login extends Component {
               <label htmlFor="password">Password</label>
             </div>
           </div>
+          <p>
+            Don't have an account?{' '}
+            <Link to="/register">Create your acccount</Link>
+          </p>
           <div className="row">
             <div className="col s12 m3">
               <button className="btn btn-large waves-effect waves-light flow">

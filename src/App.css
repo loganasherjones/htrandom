@@ -14,3 +14,7 @@ footer {
 .col.s12 > .btn {
   width: 100%;
 }
+
+.clickme {
+  cursor: pointer;
+}

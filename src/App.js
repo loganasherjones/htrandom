@@ -6,6 +6,7 @@ import Navbar from './components/layout/Navbar';
 import Dashboard from './components/layout/Dashboard';
 import Groups from './components/groups/Groups';
 import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 import store from './store';
 import './App.css';
 
@@ -21,6 +22,7 @@ class App extends Component {
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/groups" component={Groups} />
                 <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
               </Switch>
             </div>
           </div>
