@@ -48,7 +48,7 @@ class Groups extends Component {
 
     if (groups) {
       return (
-        <div className="row">
+        <div>
           <h3>
             Select your groups
             <Link to="/groups/add" className="btn btn-lg blue right">
@@ -56,31 +56,35 @@ class Groups extends Component {
               <i className="material-icons right">add</i>
             </Link>
           </h3>
-          {groups.map(group => (
-            <CardGroup
-              key={group.id}
-              group={group}
-              selected={selectedGroups.indexOf(group.id) !== -1}
-              toggle={this.toggleGroup}
-            />
-          ))}
-          <div className="col s12 m3">
-            <button
-              onClick={this.toggleConfiguration}
-              className="btn btn-large waves-effect waves-light grey"
-            >
-              Configure <i className="material-icons right">settings</i>
-            </button>
+          <div className="row">
+            {groups.map(group => (
+              <CardGroup
+                key={group.id}
+                group={group}
+                selected={selectedGroups.indexOf(group.id) !== -1}
+                toggle={this.toggleGroup}
+              />
+            ))}
           </div>
-          <div className="col s12 m3 right">
-            <button
-              onClick={this.randomize}
-              className="btn btn-large waves-effect waves-light"
-            >
-              Randomize! <i className="material-icons right">swap_calls</i>
-            </button>
+          <div className="row">
+            <div className="col s12 m3">
+              <button
+                onClick={this.toggleConfiguration}
+                className="btn btn-large waves-effect waves-light grey"
+              >
+                Configure <i className="material-icons right">settings</i>
+              </button>
+            </div>
+            <div className="col s12 m3 right">
+              <button
+                onClick={this.randomize}
+                className="btn btn-large waves-effect waves-light"
+              >
+                Randomize! <i className="material-icons right">swap_calls</i>
+              </button>
+            </div>
+            <RandomTags randomTags={randomTags} />
           </div>
-          <RandomTags randomTags={randomTags} />
         </div>
       );
     } else {

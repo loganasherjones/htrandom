@@ -37,9 +37,11 @@ class Navbar extends Component {
             #Randomizer
           </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li>
-              <Link to="/groups">Groups</Link>
-            </li>
+            {isAuthenticated ? (
+              <li>
+                <Link to="/groups">Groups</Link>
+              </li>
+            ) : null}
             {isAuthenticated ? (
               <li>
                 <a href="#!" onClick={this.onLogoutClick}>

@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
+import { UserIsAuthenticated, UserIsNotAuthenticated } from './utils/auth';
 import Navbar from './components/layout/Navbar';
 import Dashboard from './components/layout/Dashboard';
 import Groups from './components/groups/Groups';
+import AddGroup from './components/groups/AddGroup';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import store from './store';
@@ -20,9 +22,26 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Dashboard} />
-                <Route exact path="/groups" component={Groups} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/register" component={Register} />
+                <Route
+                  exact
+                  path="/groups"
+                  component={UserIsAuthenticated(Groups)}
+                />
+                <Route
+                  exact
+                  path="/groups/add"
+                  component={UserIsAuthenticated(AddGroup)}
+                />
+                <Route
+                  exact
+                  path="/login"
+                  component={UserIsNotAuthenticated(Login)}
+                />
+                <Route
+                  exact
+                  path="/register"
+                  component={UserIsNotAuthenticated(Register)}
+                />
               </Switch>
             </div>
           </div>
