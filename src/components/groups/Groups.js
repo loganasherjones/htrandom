@@ -50,10 +50,12 @@ class Groups extends Component {
       return (
         <div>
           <h3>
-            Select your groups
-            <Link to="/groups/add" className="btn btn-lg blue right">
-              Create a group
-              <i className="material-icons right">add</i>
+            Groups
+            <Link to="/groups/add" className="right teal-text">
+              <i className="material-icons right action-icon">add</i>
+            </Link>
+            <Link to="/groups/edit" className="right teal-text">
+              <i className="material-icons right action-icon">edit</i>
             </Link>
           </h3>
           <div className="row">
@@ -70,7 +72,7 @@ class Groups extends Component {
             <div className="col s12 m3">
               <button
                 onClick={this.toggleConfiguration}
-                className="btn btn-large waves-effect waves-light grey"
+                className="btn btn-large waves-effect waves-light grey button-pad"
               >
                 Configure <i className="material-icons right">settings</i>
               </button>
@@ -78,7 +80,7 @@ class Groups extends Component {
             <div className="col s12 m3 right">
               <button
                 onClick={this.randomize}
-                className="btn btn-large waves-effect waves-light"
+                className="btn btn-large waves-effect waves-light button-pad"
               >
                 Randomize! <i className="material-icons right">swap_calls</i>
               </button>

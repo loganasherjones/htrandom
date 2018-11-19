@@ -51,9 +51,9 @@ class Dashboard extends Component {
         <div className="row">
           <div className="col l12 m6">
             <p className="flow-text">
-              Fill out the hashtags on the left, and click randomize! If you
-              want to create groups, just login and you can manage your own
-              groups and randomize at different percentages.
+              Fill out the hashtags and click randomize! If you want to create
+              groups, just login and you can manage your own groups and
+              randomize at different percentages.
             </p>
           </div>
         </div>

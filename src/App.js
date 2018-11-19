@@ -11,6 +11,8 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import store from './store';
 import './App.css';
+import GroupListEdit from './components/groups/GroupListEdit';
+import EditGroup from './components/groups/EditGroup';
 
 class App extends Component {
   render() {
@@ -31,6 +33,16 @@ class App extends Component {
                   exact
                   path="/groups/add"
                   component={UserIsAuthenticated(AddGroup)}
+                />
+                <Route
+                  exact
+                  path="/groups/edit"
+                  component={UserIsAuthenticated(GroupListEdit)}
+                />
+                <Route
+                  exact
+                  path="/groups/edit/:id"
+                  component={UserIsAuthenticated(EditGroup)}
                 />
                 <Route
                   exact

@@ -4,11 +4,16 @@ import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
+import M from 'materialize-css';
 
 class Navbar extends Component {
   state = {
     isAuthenticated: false
   };
+
+  componentDidMount() {
+    M.Sidenav.init(this.sidenav);
+  }
 
   static getDerivedStateFromProps(props, state) {
     const { auth } = props;
@@ -36,6 +41,9 @@ class Navbar extends Component {
           <Link to="/" className="brand-logo">
             #Randomizer
           </Link>
+          <a href="#!" data-target="mobile-nav" className="sidenav-trigger">
+            <i className="material-icons">menu</i>
+          </a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             {isAuthenticated ? (
               <li>
@@ -55,6 +63,37 @@ class Navbar extends Component {
             )}
           </ul>
         </div>
+
+        <ul
+          className="sidenav"
+          id="mobile-nav"
+          ref={sidenav => (this.sidenav = sidenav)}
+        >
+          {isAuthenticated ? (
+            <li>
+              <Link to="/groups" className="sidenav-close">
+                Groups
+              </Link>
+            </li>
+          ) : null}
+          {isAuthenticated ? (
+            <li>
+              <a
+                href="#!"
+                onClick={this.onLogoutClick}
+                className="sidenav-close"
+              >
+                Logout
+              </a>
+            </li>
+          ) : (
+            <li>
+              <Link to="/login" className="sidenav-close">
+                Login
+              </Link>
+            </li>
+          )}
+        </ul>
       </nav>
     );
   }

@@ -18,3 +18,13 @@ footer {
 .clickme {
   cursor: pointer;
 }
+
+/* Pads the buttons on the groups page for mobile. */
+.button-pad {
+  margin-bottom: 10px;
+}
+
+/* Icons for adding/editing groups are the right size. */
+.action-icon {
+  font-size: 3rem;
+}
