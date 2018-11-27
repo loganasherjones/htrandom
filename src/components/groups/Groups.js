@@ -112,7 +112,13 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default compose(
-  firestoreConnect([{ collection: 'groups' }]),
+  connect(({ firebase: { auth } }) => ({ auth })),
+  firestoreConnect(props => [
+    {
+      collection: 'groups',
+      where: ['userId', '==', props.auth.uid]
+    }
+  ]),
   connect(
     mapStateToProps,
     mapDispatchToProps

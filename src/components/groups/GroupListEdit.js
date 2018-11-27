@@ -44,7 +44,13 @@ GroupListEdit.propTypes = {
 };
 
 export default compose(
-  firestoreConnect([{ collection: 'groups' }]),
+  connect(({ firebase: { auth } }) => ({ auth })),
+  firestoreConnect(props => [
+    {
+      collection: 'groups',
+      where: ['userId', '==', props.auth.uid]
+    }
+  ]),
   connect((state, props) => ({
     groups: state.firestore.ordered.groups
   }))
